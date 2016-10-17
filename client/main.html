@@ -1,0 +1,40 @@
+<head>
+  <title>Job listing</title>
+</head>
+
+<body>
+  {{> joblistings}}
+
+</body>
+
+<template name="joblistings">
+  {{> reactiveTable settings=settings collection=showjobs}}
+<!--
+  <div class="container">
+    <div class="row text-center services-1">
+        {{#each showjobs}}
+        <div class="col-md-4">
+          <br>
+          <div class="col-wrapper">
+            <p><a href="{{company_url}}"><img src="{{company_logo}}"/></a></p>
+            <p> {{title}} at {{company}}</p>
+            <p>created at: {{created_at}}</p>
+          <button type="button" class="btn btn-lg btn-danger" data-toggle="popover"
+           title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+          </div>
+          <br><br>
+        </div>
+        {{/each}}
+    </div>
+  </div>
+-->
+</template>
+
+<!--intend using this when content not ready-->
+<template name="loader">
+  <div id="preloader">
+    <div id="status">
+      <div class="spinner"></div>
+    </div>
+  </div>
+</template>
