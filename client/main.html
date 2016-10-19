@@ -8,7 +8,11 @@
 </body>
 
 <template name="joblistings">
-  {{> reactiveTable settings=settings collection=showjobs}}
+  {{#if myDataIsReady}}
+    {{> reactiveTable settings=settings collection=showjobs}}
+    {{else}}
+    {{> loader}}
+  {{/if}}
 <!--
   <div class="container">
     <div class="row text-center services-1">
@@ -30,7 +34,6 @@
 -->
 </template>
 
-<!--intend using this when content not ready-->
 <template name="loader">
   <div id="preloader">
     <div id="status">

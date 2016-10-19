@@ -10,12 +10,11 @@ Router.route('/', function () {
 Template.joblistings.onCreated(function() {
   this.response = new ReactiveVar();
   Meteor.call("httpRequest", "https://jobs.github.com/positions.json", (error, result) => {
-          const show = JSON.parse(result.content);
           let glow = JSON.parse(result.content);
           for (var i=0;i<show.length;i++){
-            glow[i].company_logo = "<img src='"+glow[i].company_logo+"'/>";
+            glow[i].company_logo ="<a href='"+glow[i].company_url+"'><img class='logo-com' src='"+glow[i].company_logo+"'/></a>";
           }
-          this.response.set(show);
+          this.response.set(glow);
           console.log(glow);
   });
 });
@@ -28,9 +27,18 @@ Template.joblistings.helpers({
   settings: function () {
         return {
             showFilter: true,
-            fields: ['created_at', 'company', 'title', 'type', 'how_to_apply']
+            fields: [
+                { key: 'created_at', label: 'Created At'},
+                { key: 'company', label: 'Company'},
+                { key: 'company_logo', label: 'company logo', fn: function (value) { return new Spacebars.SafeString(value) }},
+                { key: 'title', label: 'Title', fn: function (value) { return new Spacebars.SafeString(value) }},
+                { key: 'description', label: 'Description', fn: function (value) { return new Spacebars.SafeString(value) }},
+                { key: 'type', label: 'Type'},
+                { key: 'how_to_apply', label: 'How To Apply', fn: function (value) { return new Spacebars.SafeString(value) }},
+              ]
         };
-    }
+    },
+
 });
 Template.joblistings.events({
 
