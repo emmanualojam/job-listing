@@ -9,9 +9,9 @@ Router.route('/', function () {
 
 Template.joblistings.onCreated(function() {
   this.response = new ReactiveVar();
-  Meteor.call("httpRequest", "https://jobs.github.com/positions.json", (error, result) => {
+  Meteor.call("httpRequest", "http://jobs.github.com/positions.json", (error, result) => {
           let glow = JSON.parse(result.content);
-          for (var i=0;i<show.length;i++){
+          for (var i=0;i<glow.length;i++){
             glow[i].company_logo ="<a href='"+glow[i].company_url+"'><img class='logo-com' src='"+glow[i].company_logo+"'/></a>";
           }
           this.response.set(glow);
