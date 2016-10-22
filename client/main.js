@@ -19,7 +19,14 @@ Template.joblistings.onCreated(function() {
   });
 });
 
+
 Template.joblistings.helpers({
+  myDataIsReady: function() {
+    const instance = Template.instance();
+    let data = instance.response.get();
+    if (data) return true;
+    else return false;
+  },
   showjobs: function() {
     const instance = Template.instance();
     return instance.response.get();

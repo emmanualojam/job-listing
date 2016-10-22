@@ -24,3 +24,4 @@ http
 twbs:bootstrap
 iron:router
 aslagle:reactive-table
+session

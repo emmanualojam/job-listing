@@ -7,11 +7,11 @@
 </body>
 
 <template name="joblistings">
-  <!--{{#if myDataIsReady}}-->
+  {{#if myDataIsReady}}
     {{> reactiveTable settings=settings collection=showjobs}}
-    <!--{{else}}-->
-    <!--{{> loader}}-->
-  <!--{{/if}}-->
+    {{else}}
+    {{> loader}}
+  {{/if}}
 <!--
   <div class="container">
     <div class="row text-center services-1">
