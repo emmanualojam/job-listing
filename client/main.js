@@ -19,7 +19,6 @@ Template.joblistings.onCreated(function() {
   });
 });
 
-
 Template.joblistings.helpers({
   myDataIsReady: function() {
     const instance = Template.instance();
